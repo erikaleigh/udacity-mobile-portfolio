@@ -1,0 +1,23 @@
+{
+  "name": "mobile-portfolio",
+  "version": "1.0.0",
+  "description": "udacity front end nanodegree project",
+  "main": "index.js",
+  "scripts": {
+    "test": "command test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erikaleigh/udacity-mobile-portfolio.git"
+  },
+  "author": "Erika LeBlanc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erikaleigh/udacity-mobile-portfolio/issues"
+  },
+  "homepage": "https://github.com/erikaleigh/udacity-mobile-portfolio#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-responsive-images": "^1.10.1"
+  }
+}
