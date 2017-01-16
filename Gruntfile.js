@@ -10,15 +10,21 @@ module.exports = function(grunt) {
             width: 700,
             height: 525,
             suffix: 'med',
-            quality: 15
-          }]
+            quality: 25
+          },
+          {
+            width: 200,
+            height: 75,
+            suffix: 'sm',
+            quality: 20
+          }],
         },
 
         files: [{
           expand: true,
           src: ['*.{gif,jpg,png,jpeg}'],
-          cwd: 'img_src/',
-          dest: 'img/'
+          cwd: 'views/images_src',
+          dest: 'views/images'
         }]
       }
     },
