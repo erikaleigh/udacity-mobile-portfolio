@@ -447,6 +447,7 @@ var resizePizzas = function(size) {
 
   changeSliderLabel(size);
 
+  // Simplified the changePizzaSizes to resolve Forced Synchronous Layout
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
     switch(size){
@@ -505,17 +506,16 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
   console.log("Average scripting time to generate last 10 frames: " + sum / 10 + "ms");
 }
 
-// The following code for sliding background pizzas was pulled from Ilya's demo found at:
-// https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
-
+// Moved the var phase out of the for loop to stop forced synchronous layout
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+  var phase = Math.sin((document.body.scrollTop / 1250))
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    phase + (i % 5);
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
