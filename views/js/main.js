@@ -430,15 +430,16 @@ var resizePizzas = function(size) {
 
   // Changes the value for the size of the pizza above the slider
   function changeSliderLabel(size) {
+    var pizzaSize = document.getElementById("#pizzaSize");
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        pizzaSize = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        pizzaSize = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        pizzaSize = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -506,18 +507,36 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
   console.log("Average scripting time to generate last 10 frames: " + sum / 10 + "ms");
 }
 
-// Moved the var phase out of the for loop to stop forced synchronous layout
 // Moves the sliding background pizzas based on scroll position
+
+// Refactored the updatePositions function to stop forced synchronous layout
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
-  var phase = Math.sin((document.body.scrollTop / 1250))
-  for (var i = 0; i < items.length; i++) {
-    phase + (i % 5);
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+// Calls all the pizzas to be moved. Changed querySelectorAll to getElementsByClassName because it is faster
+  var items = document.getElementsByClassName('mover');
+
+// Stored the document.body.scrollTop in a variable so it would not keep calling the DOM within the loop
+  var top = document.body.scrollTop;
+
+// Empty array to push the 5 repeating calculation patterns to be re-used in the second loop
+  var phaseValues = [];
+
+// Loop to iterate over the 5 repeating calculation patterns, which pushes to phaseValues array. Uses the stored var top (= document.body.scrollTop)
+  for (i = 0; i < 5; i++) {
+    phaseValues.push(Math.sin((top / 1250) + i));
   }
+
+// Stored the items.length into a variable outside of the loop because it is reused in the loop
+  var itemsLength = items.length;
+
+// Loop that takes the values from the phaseValues array, uses them to calculate the movement of each pizza in px
+  for (var j = 0; j < itemsLength; j++) {
+    var phase = phaseValues[j % 5];
+
+    items[j].style.left = items[j].basicLeft + 100 * phase + 'px';
+  };
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
