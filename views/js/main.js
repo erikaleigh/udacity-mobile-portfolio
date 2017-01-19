@@ -302,31 +302,46 @@ function randomName() {
   return generator(adjectives[randomNumberAdj], nouns[randomNumberNoun]);
 }
 
-// These functions return a string of a random ingredient from each respective category of ingredients.
+// ---------------------------------------------------------------------- //
+// ---------------------- my code starts here --------------------------- //
 
+// These functions return a string of a random ingredient from each respective category of ingredients.
 
 // refactored pizza selection functions for better performance
 
-//
-// var ingredientItemizer = function() {
+// TODO - choose "for loop" or "forEach" loop??
+
+// var ingredients = function() {
 //   var a = pizzaIngredients;
 //
-//   for ()
+//   for (i = 0; i > a.length; i++) {
 //
-//   var randomMeat = pizzaIngredients.meats[Math.floor((Math.random() * pizzaIngredients.meats.length))];
-//   var randomNonMeat = pizzaIngredients.nonMeats[Math.floor((Math.random() * pizzaIngredients.nonMeats.length))];
-//   var randomCheese = pizzaIngredients.cheeses[Math.floor((Math.random() * pizzaIngredients.cheeses.length))];
-//   var randomSauce = pizzaIngredients.sauces[Math.floor((Math.random() * pizzaIngredients.sauces.length))];
-//   var randomCrust = pizzaIngredients.crusts[Math.floor((Math.random() * pizzaIngredients.crusts.length))];
+//   }
 //
+//   var randomMeat = a.meats[Math.floor((Math.random() * a.meats.length))];
 //   return randomMeat;
+//
+//   var randomNonMeat = a.nonMeats[Math.floor((Math.random() * a.nonMeats.length))];
 //   return randomNonMeat;
+//
+//   var randomCheese = a.cheeses[Math.floor((Math.random() * a.cheeses.length))];
 //   return randomCheese;
+//
+//   var randomSauce = a.sauces[Math.floor((Math.random() * a.sauces.length))];
 //   return randomSauce;
+//
+//   var randomCrust = a.crusts[Math.floor((Math.random() * a.crusts.length))];
 //   return randomCrust;
 //
+// }
+//
+// var ingredientItemizer = function(string) {
 //   return "<li>" + string + "</li>";
-// },
+// };
+
+// --------------------------------------------------------------------- //
+// -------------------- end of my code here ---------------------------- //
+
 
 
 var selectRandomMeat = function() {
