@@ -1,55 +1,35 @@
-## Website Performance Optimization portfolio project
+## Website Performance Optimization Project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+Project for completion of [Udacity's Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001).
 
-To get started, check out the repository and inspect the code.
+The challenge was to optimize the portfolio for speed - optimizing the critical rendering path to make the page render as quickly as possible.
 
-### Getting started
+### Optimizations:
 
-####Part 1: Optimize PageSpeed Insights score for index.html
+####Part 1: Optimized PageSpeed Insights score for index.html
 
-Some useful tips to help you get started:
+- The task runner [Grunt](http://gruntjs.com/), with the plugin [Grunt Responsive Images](https://github.com/andismith/grunt-responsive-images) was used to optimize images. For more information on using Grunt Responsive Images, [check below](#grunt-responsive-images).
+- Original images were moved to ```views/images_src/``` or ```img/``` folder, and optimized images were added to ```views/images``` or ```img/``` folder.
+- All code from ```style.css``` and ```print.css``` was moved inline to ```index.html``` to improve stop render-blocking css
+- Original Google Analytics information was removed to add the my own GA information
+- The Google web font was updated to use the [WebFontLoader](https://github.com/typekit/webfontloader) method to load fonts asynchronously to remove render-blocking css and improve page speed.
 
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
 
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
 
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to the top-level of your project directory to make your local server accessible remotely.
+####Part 2: Optimized Frames per Second in pizza.html (via updates to code in views/js/main.js)
 
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ./ngrok http 8080
-  ```
 
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
 
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
+####Build tools used:
 
-####Part 2: Optimize Frames per Second in pizza.html
+Task runner [Grunt](http://gruntjs.com/), with the plugin [Grunt Responsive Images](https://github.com/andismith/grunt-responsive-images) was used to optimize images.
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+[####To use Grunt Responsive Images](#grunt-responsive-images):
+1. Follow instructions on the [Grunt Getting Started](http://gruntjs.com/getting-started) page to install Grunt and to get started with using grunt in a project folder
 
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
+2. Once Grunt has successfully been installed and the ```package.json``` file has been created, follow instructions to install the [Grunt Responsive Images](https://github.com/andismith/grunt-responsive-images) plugin
 
-### Optimization Tips and Tricks
-* [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
-* [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
-* [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
-* [Avoiding Rendering Blocking CSS](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css.html "render blocking css")
-* [Optimizing JavaScript](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/adding-interactivity-with-javascript.html "javascript")
-* [Measuring with Navigation Timing](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/measure-crp.html "nav timing api"). We didn't cover the Navigation Timing API in the first two lessons but it's an incredibly useful tool for automated page profiling. I highly recommend reading.
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/eliminate-downloads.html">The fewer the downloads, the better</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
-* <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
+3. A sample Gruntfile is [available here](http://gruntjs.com/sample-gruntfile). A sample Gruntfile using Responsive Images is [available here](https://github.com/andismith/grunt-responsive-images) under
+###Usage Examples
 
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
-
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
+4. To when installation is complete and the Gruntfile has been created and customized, run ```grunt responsive-images``` in the command line to optimize images
