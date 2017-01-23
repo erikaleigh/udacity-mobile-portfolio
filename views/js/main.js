@@ -305,8 +305,6 @@ function randomName() {
 // ---------------------------------------------------------------------- //
 // ---------------------- my code starts here --------------------------- //
 
-// These functions return a string of a random ingredient from each respective category of ingredients.
-
 // refactored pizza selection functions for better performance
 
 // TODO - choose "for loop" or "forEach" loop??
@@ -550,7 +548,7 @@ function updatePositions() {
   for (var j = 0; j < itemsLength; j++) {
     var phase = phaseValues[j % 5];
 
-    items[j].style.left = items[j].basicLeft + 100 * phase + 'px';
+    items[j].style.transform = 'translateX('+(items[j].basicLeft + 100 * phase + 'px');
   };
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
