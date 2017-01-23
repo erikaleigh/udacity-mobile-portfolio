@@ -29,10 +29,13 @@ form {
   font-weight: 800;
 }
 
+/*added will-change: transform*/
+
 .mover {
   position: fixed;
   width: 256px;
   z-index: -1;
+  will-change: transform;
 }
 
 .randomPizzaContainer {

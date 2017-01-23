@@ -2,7 +2,7 @@
   "name": "mobile-portfolio",
   "version": "1.0.0",
   "description": "udacity front end nanodegree project",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "command test"
   },

@@ -312,11 +312,13 @@ function randomName() {
 // TODO - choose "for loop" or "forEach" loop??
 
 // var ingredients = function() {
-//   var a = pizzaIngredients;
+//
+//   random = [];
 //
 //   for (i = 0; i > a.length; i++) {
-//
-//   }
+//     pizzaIngredients[i][Math.floor((Math.random() * pizzaIngredients[i].length))];
+//     random.push();
+//   };
 //
 //   var randomMeat = a.meats[Math.floor((Math.random() * a.meats.length))];
 //   return randomMeat;
@@ -456,8 +458,6 @@ var resizePizzas = function(size) {
       case "3":
         pizzaSize = "Large";
         return;
-      default:
-        console.log("bug in changeSliderLabel");
     }
   }
 
@@ -566,11 +566,12 @@ function updatePositions() {
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
+// Reduced the amount of pizzas being painted to 53, to improve performance. 53 chosen because it fills the page on mobile, as well as on desktop
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 53; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
