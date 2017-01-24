@@ -303,7 +303,7 @@ function randomName() {
 }
 
 // ---------------------------------------------------------------------- //
-// ---------------------- my code starts here --------------------------- //
+// ---------------------- new code starts here ------------------------- //
 
 // refactored pizza selection functions for better performance
 
@@ -340,9 +340,9 @@ function randomName() {
 // };
 
 // --------------------------------------------------------------------- //
-// -------------------- end of my code here ---------------------------- //
+// -------------------- end of new code here --------------------------- //
 
-
+// original code from forked copy
 
 var selectRandomMeat = function() {
   var randomMeat = pizzaIngredients.meats[Math.floor((Math.random() * pizzaIngredients.meats.length))];
