@@ -462,6 +462,8 @@ var resizePizzas = function(size) {
   changeSliderLabel(size);
 
   // Simplified the changePizzaSizes to resolve Forced Synchronous Layout
+  // Changed
+
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
     switch(size){
@@ -476,7 +478,7 @@ var resizePizzas = function(size) {
         break;
     }
 
-    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
 
     for (var i = 0; i < randomPizzas.length; i++) {
       randomPizzas[i].style.width = newWidth + "%";
@@ -494,9 +496,11 @@ var resizePizzas = function(size) {
 
 window.performance.mark("mark_start_generating"); // collect timing data
 
+// Moved var pizzasDiv out of the loop to improve performance
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");
+
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -548,7 +552,7 @@ function updatePositions() {
   for (var j = 0; j < itemsLength; j++) {
     var phase = phaseValues[j % 5];
 
-    items[j].style.transform = 'translateX('+(items[j].basicLeft + 100 * phase + 'px');
+    items[j].style.transform = 'translateX(' + 100 * phase + 'px)';
   };
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -564,17 +568,24 @@ function updatePositions() {
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
-// Reduced the amount of pizzas being painted to 53, to improve performance. 53 chosen because it fills the page on mobile, as well as on desktop
+// Reduced the amount of pizzas being painted to improve performance, used window.innerHeight to to dynamically calculate the number of pizzas needed to fill the screen, based on browser window resolution
+
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 53; i++) {
-    var elem = document.createElement('img');
+  var rows = Math.ceil(window.innerHeight / s);
+  var pizzaTotal = rows * cols;
+  console.log(pizzaTotal);
+
+  var elem;
+  for (var i = 0; i < pizzaTotal; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
+    elem.style.left = (i % cols) * s + 'px';
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);

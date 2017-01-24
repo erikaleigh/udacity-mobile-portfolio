@@ -4,6 +4,10 @@ Project for completion of [Udacity's Front-End Web Developer Nanodegree](https:/
 
 The challenge was to optimize the portfolio for speed - optimizing the critical rendering path to make the page render as quickly as possible.
 
+### To run the site:
+- Locally: Open index.html in your browser
+- Check out the [live site](https://erikaleigh.github.io/udacity-web-optimization/)
+
 ### Optimizations:
 
 ####Part 1: Optimized PageSpeed Insights score for ```index.html```
@@ -18,10 +22,11 @@ The challenge was to optimize the portfolio for speed - optimizing the critical 
 
 ####Part 2: Optimized Frames per Second in ```pizza.html``` (via updates to code in ```views/js/main.js```)
 
-- Simplified the ```changePizzaSizes()``` function (line 466), removing all unnecessary DOM calls and an unnecessary loop, to resolve Forced Synchronous Layout
-- Refactored the ```updatePositions()``` function (line 526), removing unnecessary DOM calls within the loop, and adding variables outside of the loop instead of calculating them within the loop. Used ```style.transform``` for movement of pizza images instead of ```style.left``` for improved speed
-- On line 573, reduced the amount of pizzas being painted to 53 to improve performance. 53 was chosen because it fills the page on mobile, as well as on desktop
-
+- Simplified the ```changePizzaSizes()``` function (line 468), removing all unnecessary DOM calls and an unnecessary loop, to resolve Forced Synchronous Layout
+- Changed ```querySelectorAll``` to ```getElementsByClassName``` on line 481
+- Moved unnecessary DOM calls from loop on line 503 to outside the loop
+- Refactored the ```updatePositions()``` function (line 530), removing unnecessary DOM calls within the loop, and adding variables outside of the loop instead of calculating them within the loop. Used ```style.transform``` for movement of pizza images instead of ```style.left``` for improved speed
+- Reduced the amount of pizzas being painted on line 574 to improve performance, used ```window.innerHeight``` to to dynamically calculate the number of pizzas needed to fill the screen, based on browser window resolution
 
 
 ###Build tools used:
