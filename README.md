@@ -2,7 +2,7 @@
 
 Project for completion of [Udacity's Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001).
 
-The challenge was to optimize the portfolio for speed - optimizing the critical rendering path to make the page render as quickly as possible.
+The challenge was to optimize the portfolio for speed - optimizing the critical rendering path to make the page render as quickly as possible. Udacity's instructions for this project can be found [here](https://github.com/erikaleigh/frontend-nanodegree-mobile-portfolio).
 
 ### To run the site:
 - Locally: Open index.html in your browser
